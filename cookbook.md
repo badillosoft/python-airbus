@@ -71,4 +71,108 @@ def saludar(nombre, apellido):
 print saludar("ash", "ketchup")
 ~~~
 
-# 1.3 Arreglos
+### 1.3 Arreglos
+
+Un arreglo es un conjunto de datos el cual se accede mediante una variable y los `[]` indicando 
+el índice empezando siempre por el índice 0.
+
+> Varios arreglos con distintos datos
+
+~~~py
+# crea un arreglo de numeros explicitamente
+a = [1, 3, 5, 7, 9]
+
+# imprime el arreglo
+print a
+
+# agrega el elemento 11 al final del arreglo
+a.append(11)
+
+print a
+
+# elimina y devuelve el elemento de la posicion 0 del arreglo
+print a.pop(0)
+
+print a
+
+# inserta el elemento 6 en el indice 3, es decir, la posicion 4 real
+a.insert(3, 6)
+
+print a
+
+# agrega los elementos de lista
+a.fromlist([2, 4, 6, 8, 10])
+
+print a
+
+# elimina el elemento con indice 1
+a.remove(1)
+
+print a
+
+# cuenta el numero de elementos 6 en el arreglo
+print a.count(6)
+~~~
+
+### 1.4 Condicional _if_
+
+Una condicional es una estructura que nos permite ejecutar un bloque de código
+sólo si se cumple una condición booleana
+
+> Imprimir si la variable x es mayor o igual a 32
+
+~~~py
+# raw_input devuelve una cadena de texto con lo que ingrese el usuario desde 
+# la entrada estandar y int(...) convierte a la cadena ... en un entero (si se puede)
+x = int(raw_input("Dame x: "))
+
+if x >= 32:
+  print "x es mayor o igual a 32"
+~~~
+
+Opcionalmente las condicionales pueden contener un bloque negativo en caso de que la
+condición no se cumpla.
+
+> Determinar si la variable y es menor a 8 y mostrar si lo es o no lo es
+
+~~~py
+y = int(raw_input("Dame y: "))
+
+if y < 8:
+  print "y es menor a 8"
+else:
+  print "y no es menor a 8 (y >= 8)"
+~~~
+
+Finalmente podemos anidar varias condiciones para el caso en que necesitemos ejecutar sólo
+una condición que se cumpla y las demás no.
+
+> Determinar en que etapa de la vida se encuentra según la edad
+
+~~~py
+edad = int(raw_input("Dame tu edad: "))
+
+elif edad <= 11:
+  print "Eres un niño"
+elif edad < 18:
+  print "Eres un adolescente"
+elif edad < 60:
+  print "Eres un adulto"
+elif edad < 120:
+  print "Eres chido"
+else:
+  print "La edad es falsa"
+~~~
+
+
+  
+
+
+> Crear un arreglo que contenga los primeros 100 números naturales al cuadrado
+
+~~~py
+a = []
+
+for 
+~~~
+
