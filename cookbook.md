@@ -207,14 +207,109 @@ while True:
     break
 ~~~
 
+## 1. Ejemplos
 
-
-
-> Crear un arreglo que contenga los primeros 100 números naturales al cuadrado
+> Hacer función que convierta de grados a radianes
 
 ~~~py
-a = []
+import math
 
-for 
+def deg_to_rad(d):
+  return d * math.pi / 180.0
 ~~~
 
+> Hacer una función que cuente el número de palabras en una cadena
+
+~~~py
+s = "hola esta es una cadena de prueba para contar el numero de palabras"
+
+# creamos un arreglo que guarde las cadenas separadas por espacio
+aux = s.split(" ")
+
+print aux
+
+# el numero de cadenas en el arreglo determina el numero de palabras en la cadena
+palabras = len(aux)
+
+print "El numero de palabras es %d" % palabras
+~~~
+
+> Copiar una cadena en otra vacia
+
+~~~py
+s = "hola mundo"
+
+r = ""
+
+for i in range(0, len(s)):
+  r += s[i]
+  
+r = ""
+
+for c in s:
+  r += c
+~~~
+
+> Quitar los espacios multiples en una cadena para que quede una cadena con a lo mas
+un espacio de separación en palabras. Ejemplo: `hola       mundo` => `hola mundo`.
+
+~~~py
+s = "hola                                   mundo            :)"
+
+r = ""
+
+hay_doble_espacio = False
+
+for c in s:
+  if c != " ":
+    hay_doble_espacio = False
+  elif c == " ":
+    if hay_doble_espacio:
+      continue
+    hay_doble_espacio = True
+    
+  r += c
+  
+print r
+~~~
+
+> Quitar los espacios de una cadena
+
+~~~py
+s = "h o l    a        m  un  d  o         : )    "
+
+r = ""
+
+for c in s:
+  if c != " ":
+    r += c
+    
+r = ""
+
+for c in s:
+  if c == " ":
+    continue
+ 
+  r += c
+  
+print r
+~~~
+
+> Comprobar si una cadena es un palindromo
+
+~~~py
+s = "anitalavalatina"
+
+n = len(s)
+
+es_palindromo = True
+
+for i in range(0, n):
+  if s[i] != s[n - 1 - i]:
+    es_palindromo = False
+    break
+    
+# a = valor_v if condicion else valor_f
+# max = x if x > y else y
+print ("Es palindromo" if es_palindromo else "No es palindromo")
+~~~
