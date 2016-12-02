@@ -42,6 +42,8 @@ print a, b
 Las variables pueden almacenar números enteros, flotantes, cadenas de caracteres, booleanos, nulos,
 arreglos de otras variables o valores, tuplas de datos, diccionarios y expresiones lamda.
 
+> Imprime dos números flotantes con formato
+
 ~~~py
 # 1 / 3 devuelve 0 porque la division entre numeros enteros es entera
 a = 1 / 3.0
@@ -52,3 +54,21 @@ print "A = %.2f | B = %.8f" % (a, b)
 ~~~
 
 ### 1.2 Funciones
+
+Una función es un fragmento de código que toma parametros de entrada y opcionalmente devuelve
+una salida, ejecutando líneas de código cuando es llamada. Las funciones abstraen la funcionalidad
+de un proceso altamente repetible para ahorrar código. Otra forma de nombrar a las funciones es 
+mediante la palabra `rutina`.
+
+> Define una función saludar que muestra un mensaje formateado usando los parámetros
+
+~~~py
+# ejemplo de la funcion nombre que recibe dos parametros y devuelve None
+def saludar(nombre, apellido):
+  # Ponemos todo el codigo
+  return "hola: %s %s" % (nombre, apellido)
+  
+print saludar("ash", "ketchup")
+~~~
+
+# 1.3 Arreglos
