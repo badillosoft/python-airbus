@@ -164,8 +164,50 @@ else:
   print "La edad es falsa"
 ~~~
 
+### 1.5 Ciclo _for-in_
 
+Un ciclo iterador consiste en recorrer un elemento iterable, generalmente una lista y
+asiganar el valor iterado en una variable llamada `elemento iterado`.
+
+> Imprimir los números de 1 a 100
+
+~~~py
+for i in range(1, 101):
+  print i
+~~~
+
+> Recorrer los elementos de una lista
+
+~~~py
+a = [1, 3, 5, 7, 9, 11]
+
+for x in a:
+  print x
   
+for i in range(0, len(a)):
+  print a[i]
+~~~
+
+### 1.6 Ciclo _while_
+
+Un ciclo repetidor consiste en repetir un bloque de código mientras una condición booleana se cumpla.
+
+> Solicitar al usuario un número hasta que sea 4
+
+~~~py
+n = 0
+
+while n != 4:
+  n = int(raw_input("Dame un numero: "))
+  
+while True:
+  n = int(raw_input("Dame un numero: "))
+  
+  if n == 4:
+    break
+~~~
+
+
 
 
 > Crear un arreglo que contenga los primeros 100 números naturales al cuadrado
