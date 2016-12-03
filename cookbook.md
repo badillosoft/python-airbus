@@ -314,7 +314,7 @@ for i in range(0, n):
 print ("Es palindromo" if es_palindromo else "No es palindromo")
 ~~~
 
-# 2. Gráficas y datos
+## 2. Gráficas y datos
 
 Matplotlib es un librería que nos permite graficar [http://matplotlib.org/](http://matplotlib.org/)
 
@@ -437,7 +437,6 @@ f = open("datos.csv", "w")
 for x in X:
   for y in Y:
     f.write("%.8f, %.8f, %.8f\n" % (x, y, z(x, y)))
-  
 
 f.close()
 ~~~
