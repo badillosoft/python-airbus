@@ -313,3 +313,219 @@ for i in range(0, n):
 # max = x if x > y else y
 print ("Es palindromo" if es_palindromo else "No es palindromo")
 ~~~
+
+# 2. Gráficas y datos
+
+Matplotlib es un librería que nos permite graficar [http://matplotlib.org/](http://matplotlib.org/)
+
+~~~bash
+$ pip install matplotlib
+~~~
+
+> Graficar una serie de datos X contra Y
+
+~~~py
+import matplotlib.pyplot as plt
+
+X = [-3, -2, -1, 0, 1, 2, 3]
+Y = [9, 4, 1, 0, 1, 4, 9]
+
+# serie X, Y, Color/Tipo
+plt.plot(X, Y, "r")
+
+# muestra la ventana
+plt.show()
+~~~
+
+> Guardar una gráfica en una imagen
+
+~~~py
+import matplotlib.pyplot as plt
+
+X = [-3, -2, -1, 0, 1, 2, 3]
+Y = [9, 4, 1, 0, 1, 4, 9]
+
+# serie X, Y, Color/Tipo
+plt.plot(X, Y, "r")
+
+# guarda como imagen en disco la grafica
+plt.savefig("grafica.png")
+~~~
+
+> Graficar en 3 dimensiones
+
+~~~py
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib import cm
+import math
+
+# definimos las series X y Y
+X = [-3, -2, -1, 0, 1, 2, 3]
+Y = [-3, -2, -1, 0, 1, 2, 3]
+
+# creamos una matriz con la malla de valores X, Y y Z
+XV = []
+YV = []
+ZV = []
+
+for x in X:
+      vx = []
+      vy = []
+      vz = []
+      for y in Y:
+            vx.append(x)
+            vy.append(y)
+            vz.append(math.cos(x) + math.sin(y))
+      XV.append(vx)
+      YV.append(vy)
+      ZV.append(vz)
+
+# creamos una figura que se refiere a una grafica
+fig = plt.figure()
+
+# creamos un contexto 3d
+ax = fig.gca(projection="3d")
+
+# creamos la superficie con las matrices de valores
+surf = ax.plot_surface(XV, YV, ZV, rstride=1, cstride=1, cmap=cm.coolwarm,
+                       linewidth=1, antialiased=False)
+
+# coloreamos y mostramos la barra de color con el rango de cada color
+fig.colorbar(surf, shrink=1, aspect=5)
+
+# muestra la ventana con la grafica 3d
+plt.show()
+~~~
+
+> Crear un linspace en 2 dimensiones llamado meshgridXYZ
+
+~~~py
+def meshgridXYZ(X, Y, z):
+  XV = []
+  YV = []
+  ZV = []
+
+  for x in X:
+        vx = []
+        vy = []
+        vz = []
+        for y in Y:
+              vx.append(x)
+              vy.append(y)
+              vz.append(z(x, y))
+        XV.append(vx)
+        YV.append(vy)
+        ZV.append(vz)
+  return XV, YV, ZV
+~~~
+
+> Generar un archivo CSV con valores X, Y, Z
+
+~~~py
+import math
+
+X = [-3, -2, -1, 0, 1, 2, 3]
+Y = [-3, -2, -1, 0, 1, 2, 3]
+
+def z(x, y):
+  return math.cos(x) + math.sin(y) 
+
+# el modo w es para escribir archivos
+f = open("datos.csv", "w")
+
+for x in X:
+  for y in Y:
+    f.write("%.8f, %.8f, %.8f\n" % (x, y, z(x, y)))
+  
+
+f.close()
+~~~
+
+> Graficar datos 3d en CSV
+
+~~~py
+def boxXYZ(space, n):
+  X = []
+  Y = []
+  Z = []
+  
+  vx = []
+  vy = []
+  vz = []
+  
+  i = 1
+  for vec in space:
+      x = vec[0]
+      y = vec[1]
+      z = vec[2]
+      vx.append(x)
+      vy.append(y)
+      vz.append(z)
+      
+      # a % b == 0 que a es multiplo de b
+      if i % n == 0:
+        X.append(vx)
+        Y.append(vy)
+        Z.append(vz)
+        vx = []
+        vy = []
+        vz = []
+        
+      i += 1
+        
+  return X, Y, Z
+
+# el modo r es de lectura
+f = open("datos.csv", "r")
+
+space = []
+
+for linea in f:
+  aux = linea.split(",")
+  x = float(aux[0])
+  y = float(aux[1])
+  z = float(aux[2])
+  space.append([x, y, z])
+  
+X, Y, Z = boxXYZ(space, 7)
+
+# TODO: graficar X, Y, Z
+
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib import cm
+
+# creamos una figura que se refiere a una grafica
+fig = plt.figure()
+
+# creamos un contexto 3d
+ax = fig.gca(projection="3d")
+
+# creamos la superficie con las matrices de valores
+surf = ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=cm.coolwarm,
+                       linewidth=1, antialiased=False)
+
+# coloreamos y mostramos la barra de color con el rango de cada color
+fig.colorbar(surf, shrink=1, aspect=5)
+
+# muestra la ventana con la grafica 3d
+plt.show()  
+~~~
+
+> Generar un espacio uniforme lineal
+
+~~~py
+def linspace(a, b, n):
+    # Delta es l diferencia entre dos numeros
+    d = float(b - a) / (n - 1)
+
+    # El arreglo de n numeros uniformemente distribuidos
+    r = []
+
+    # Agregamos a + 0 * d, a + 1 * d, ..., a + (n - 1) * d
+    for i in range(0, n):
+        r.append(a + i * d)
+
+    return r
+~~~
